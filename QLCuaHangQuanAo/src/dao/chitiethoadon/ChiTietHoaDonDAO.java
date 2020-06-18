@@ -6,18 +6,10 @@
 package dao.chitiethoadon;
 
 import dao.ThaoTacDB;
-import dao.hoadon.HoaDonDAO;
-import dao.khachhang.KhachHangDAO;
-import dao.nhanvien.NhanVienDAO;
-import dao.sanpham.SanPhamDAO;
 import entity.ChiTietHoaDon;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 
 /**
  *
@@ -60,7 +52,25 @@ public class ChiTietHoaDonDAO {
         }
         return false;
     }
-
+    public boolean deleteChiTietHoaDonByMaSP(int maSP) {
+        try {
+            String sql = "DELETE FROM ChiTietHoaDon WHERE masp=" + maSP;
+            return chitiethoaDonDB.updateData(sql);
+        } catch (Exception ex) {
+            Logger.getLogger(ChiTietHoaDonDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+    
+     public boolean deleteChiTietHoaDonByMaHoaDon(int maHD) {
+        try {
+            String sql = "DELETE FROM ChiTietHoaDon WHERE mahd=" + maHD;
+            return chitiethoaDonDB.updateData(sql);
+        } catch (Exception ex) {
+            Logger.getLogger(ChiTietHoaDonDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
     public boolean update(ChiTietHoaDon hd, int soluongBanCu) {
         try {
             String getSlTon = "select soluongTon from SanPham where masp=" + hd.getMasp();

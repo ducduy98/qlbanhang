@@ -60,10 +60,82 @@ public class SanPhamDAO {
         return false;
     }
 
+    public boolean deleteSPByMaLoaiHang(int maLH) {
+        try {
+            String sql = "DELETE FROM SanPham WHERE maLoaiHang=" + maLH;
+            return sanPhamDB.updateData(sql);
+        } catch (Exception ex) {
+            Logger.getLogger(SanPhamDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+
+    public boolean deleteSPByMaNCC(int maNCC) {
+        try {
+            String sql = "DELETE FROM SanPham WHERE maNCC=" + maNCC;
+            return sanPhamDB.updateData(sql);
+        } catch (Exception ex) {
+            Logger.getLogger(SanPhamDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+
     public ArrayList<SanPham> selectAllSP() {
         try {
             ArrayList<SanPham> list = new ArrayList<>();
             String sql = "select * from SanPham";
+            ResultSet rs = sanPhamDB.queryData(sql);
+            while (rs.next()) {
+                SanPham sp = new SanPham();
+                sp.setMasp(rs.getInt("masp"));
+                sp.setTensp(rs.getString("tensp"));
+                sp.setSoluong(rs.getInt("soluong"));
+                sp.setDongia(rs.getFloat("dongia"));
+                sp.setSoluongTon(rs.getInt("soluongton"));
+                sp.setChietkhau(rs.getFloat("chietkhau"));
+                sp.setMaLoaiHang(rs.getInt("maLoaiHang"));
+                sp.setMaNCC(rs.getInt("maNCC"));
+                list.add(sp);
+
+            }
+
+            return list;
+        } catch (Exception ex) {
+            Logger.getLogger(SanPhamDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    public ArrayList<SanPham> findAllSPByMaLoaiHang(int maLH) {
+        try {
+            ArrayList<SanPham> list = new ArrayList<>();
+            String sql = "select * from SanPham where maLoaiHang=" + maLH + "";
+            ResultSet rs = sanPhamDB.queryData(sql);
+            while (rs.next()) {
+                SanPham sp = new SanPham();
+                sp.setMasp(rs.getInt("masp"));
+                sp.setTensp(rs.getString("tensp"));
+                sp.setSoluong(rs.getInt("soluong"));
+                sp.setDongia(rs.getFloat("dongia"));
+                sp.setSoluongTon(rs.getInt("soluongton"));
+                sp.setChietkhau(rs.getFloat("chietkhau"));
+                sp.setMaLoaiHang(rs.getInt("maLoaiHang"));
+                sp.setMaNCC(rs.getInt("maNCC"));
+                list.add(sp);
+
+            }
+
+            return list;
+        } catch (Exception ex) {
+            Logger.getLogger(SanPhamDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
+    public ArrayList<SanPham> findAllSPByMaNCC(int maNCC) {
+        try {
+            ArrayList<SanPham> list = new ArrayList<>();
+            String sql = "select * from SanPham where maNCC=" + maNCC + "";
             ResultSet rs = sanPhamDB.queryData(sql);
             while (rs.next()) {
                 SanPham sp = new SanPham();

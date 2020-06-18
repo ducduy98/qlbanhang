@@ -25,22 +25,13 @@ public class ConnectDB {
         try {
             Class.forName(classForname);
             Connection conn=DriverManager.getConnection(url,username,pass);
-            
-            if (conn!=null) {
-                System.out.println("con"+conn);
-                System.out.println("ket noi thanh cong");
-            }
-            
             return conn;
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ConnectDB.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(ConnectDB.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
-        return null;
-         
+        return null;         
     }
     public static void main(String[] args) {
         ConnectDB connectToSQL=new ConnectDB();

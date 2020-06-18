@@ -5,14 +5,11 @@
  */
 package dao.hoadon;
 
-import dao.khachhang.*;
-import dao.loaihang.*;
 import dao.ThaoTacDB;
 import entity.HoaDon;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
