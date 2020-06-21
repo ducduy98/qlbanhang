@@ -3,14 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/QLBanHang/QLCuaHangQuanAo/src/dao/sanpham/SanPhamTable.java</file>
             <file>file:/D:/QLBanHang/QLCuaHangQuanAo/src/view/AdminScreen.java</file>
-            <file>file:/D:/QLBanHang/QLCuaHangQuanAo/src/dao/NCC/NCCDAO.java</file>
-            <file>file:/D:/QLBanHang/QLCuaHangQuanAo/src/dao/sanpham/SanPhamDAO.java</file>
+            <file>file:/D:/QLBanHang/QLCuaHangQuanAo/src/view/DangNhapScreen.java</file>
+            <file>file:/D:/QLBanHang/QLCuaHangQuanAo/src/dao/nhanvien/NhanVienDAO.java</file>
+            <file>file:/D:/QLBanHang/QLCuaHangQuanAo/src/entity/AccountSession.java</file>
             <file>file:/D:/QLBanHang/QLCuaHangQuanAo/src/dao/khachhang/KhachHangDAO.java</file>
-            <file>file:/D:/QLBanHang/QLCuaHangQuanAo/src/dao/loaihang/LoaiHangDAO.java</file>
-            <file>file:/D:/QLBanHang/QLCuaHangQuanAo/src/dao/hoadon/HoaDonDAO.java</file>
-            <file>file:/D:/QLBanHang/QLCuaHangQuanAo/src/dao/chitiethoadon/ChiTietHoaDonDAO.java</file>
+            <file>file:/D:/QLBanHang/QLCuaHangQuanAo/src/view/BanHangScreen.java</file>
+            <file>file:/D:/QLBanHang/QLCuaHangQuanAo/src/view/DoiMatKhauScreen.java</file>
         </group>
     </open-files>
 </project-private>

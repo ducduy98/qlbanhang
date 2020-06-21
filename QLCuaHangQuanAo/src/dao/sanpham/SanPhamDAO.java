@@ -25,7 +25,7 @@ public class SanPhamDAO {
     public boolean insertSP(SanPham sp) {
         try {
             String sql = "insert into SanPham(tensp,soluong,dongia,soluongTon,chietkhau,maLoaiHang,maNCC)"
-                    + "values(N'" + sp.getTensp() + "'," + sp.getSoluong() + ","
+                    + "values(N'" + sp.getTensp() + "'," + 0 + ","
                     + sp.getDongia() + "," + sp.getSoluongTon() + "," + sp.getChietkhau()
                     + "," + sp.getMaLoaiHang() + "," + sp.getMaNCC() + ")";
 
@@ -38,8 +38,7 @@ public class SanPhamDAO {
 
     public boolean updateSP(SanPham sp) {
         try {
-            String sql = "update SanPham set tensp=N'" + sp.getTensp() + "',soluong=" + sp.getSoluong()
-                    + ",dongia=" + sp.getDongia() + ",soluongTon=" + sp.getSoluongTon()
+            String sql = "update SanPham set tensp=N'" + sp.getTensp() + "',dongia=" + sp.getDongia() + ",soluongTon=" + sp.getSoluongTon()
                     + ",chietkhau=" + sp.getChietkhau() + ",maLoaiHang=" + sp.getMaLoaiHang() + ",maNCC=" + sp.getMaNCC()
                     + "where masp=" + sp.getMasp();
 

@@ -28,9 +28,9 @@ public class SanPhamTable extends AbstractTableModel
     NCCDAO nccDAO=new NCCDAO();
     LoaiHangDAO loaiHangDAO=new LoaiHangDAO();
     //Khai báo xâu chứa tiêu đề của bảng.
-    private String name[]={"Mã SP","Tên SP","Số lượng","Đơn giá","Số lượng tồn","Chiết khấu","Nhà cung cấp","Loại hàng"};
+    private String name[]={"Mã sản phẩm","Tên sản phẩm","Đơn giá","Số lượng trong kho","Chiết khấu","Nhà cung cấp","Loại hàng"};
     //Khai báo lớp Chứa kiểu dữ liệu của từng trường tương ứng.
-    private Class classes[]={Integer.class,String.class,Integer.class,Float.class,Integer.class,Float.class,String.class,String.class};
+    private Class classes[]={Integer.class,String.class,Float.class,Integer.class,Float.class,String.class,String.class};
     //Tạo một đối tượng arrayList có tên listThiSinh.
     ArrayList<SanPham> dsSP=new ArrayList<SanPham>();
     
@@ -65,17 +65,17 @@ public class SanPhamTable extends AbstractTableModel
             //Cột họ tên
             case 1: return dsSP.get(rowIndex).getTensp();
             //cột điểm toán
-            case 2: return dsSP.get(rowIndex).getSoluong();
+//            case 2: return dsSP.get(rowIndex).getSoluong();
             //cột điểm lý
-            case 3: return dsSP.get(rowIndex).getDongia();
+            case 2: return dsSP.get(rowIndex).getDongia();
             //cột điểm hóa
-            case 4: return dsSP.get(rowIndex).getSoluongTon();
+            case 3: return dsSP.get(rowIndex).getSoluongTon();
             
-            case 5: return dsSP.get(rowIndex).getChietkhau();
+            case 4: return dsSP.get(rowIndex).getChietkhau();
             
-            case 6: return mapNCC.get(dsSP.get(rowIndex).getMaNCC());
+            case 5: return mapNCC.get(dsSP.get(rowIndex).getMaNCC());
             
-            case 7: return mapLH.get(dsSP.get(rowIndex).getMaLoaiHang());          
+            case 6: return mapLH.get(dsSP.get(rowIndex).getMaLoaiHang());          
                         
             default :return null;
         }

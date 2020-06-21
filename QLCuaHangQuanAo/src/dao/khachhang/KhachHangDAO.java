@@ -96,6 +96,23 @@ public class KhachHangDAO {
         }
         return null;
     }
+    public KhachHang getKHBySDT(String sdt) throws SQLException {
+        try {
+            String sql = "select * from KhachHang where sdt='" + sdt + "'";
+            ResultSet rs = khachHangDB.queryData(sql);
+            KhachHang kh = null;
+            while (rs.next()) {
+                kh=new KhachHang();
+                kh.setMakh(rs.getInt("makh"));
+                kh.setTenkh(rs.getString("tenkh"));
+                kh.setSdt(rs.getString("sdt"));
+            }
+            return kh;
+        } catch (Exception ex) {
+            Logger.getLogger(KhachHangDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
 
     public ArrayList<KhachHang> findKhachHang(String key) {
         try {
