@@ -52,6 +52,7 @@ public class ChiTietHoaDonDAO {
         }
         return false;
     }
+
     public boolean deleteChiTietHoaDonByMaSP(int maSP) {
         try {
             String sql = "DELETE FROM ChiTietHoaDon WHERE masp=" + maSP;
@@ -61,8 +62,8 @@ public class ChiTietHoaDonDAO {
         }
         return false;
     }
-    
-     public boolean deleteChiTietHoaDonByMaHoaDon(int maHD) {
+
+    public boolean deleteChiTietHoaDonByMaHoaDon(int maHD) {
         try {
             String sql = "DELETE FROM ChiTietHoaDon WHERE mahd=" + maHD;
             return chitiethoaDonDB.updateData(sql);
@@ -71,8 +72,39 @@ public class ChiTietHoaDonDAO {
         }
         return false;
     }
+
+    public boolean deleteChiTietHoaDonByMaHoaDonAndMaSP(int maHD, int masp, int soLuongSP) {
+        try {
+            String check = "Select soluongTon  from SanPham where masp =" + masp + "";
+            ResultSet res = null;
+            res = chitiethoaDonDB.queryData(check);
+            if (null != res) {
+                int slTon = -1;
+                while (res.next()) {
+                    slTon = res.getInt("soluongTon");
+//                    System.out.println("Số lượng tồn query :==== " + res.getInt("soluongTon"));
+                }
+                //cong lại so luong sp ban trong kho
+                slTon = slTon + soLuongSP;
+                String sqlUpdateSP = "update SanPham set soluongTon= " + slTon + " where masp=" + masp;                
+                chitiethoaDonDB.updateData(sqlUpdateSP);
+                
+                //delete  CHI TIET HOA DON
+                String sql = "DELETE FROM ChiTietHoaDon WHERE mahd=" + maHD + " and masp=" + masp;
+                return chitiethoaDonDB.updateData(sql);
+            } else {
+                return false;
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(ChiTietHoaDonDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+
     public boolean update(ChiTietHoaDon hd, int soluongBanCu) {
         try {
+            System.out.println("ma sp update=" + hd.getMasp());
             String getSlTon = "select soluongTon from SanPham where masp=" + hd.getMasp();
             ResultSet rsSLTon = chitiethoaDonDB.queryData(getSlTon);
             int slTonCu = -1;
@@ -81,10 +113,11 @@ public class ChiTietHoaDonDAO {
             }
             int sl = slTonCu + soluongBanCu;
 
-            String backSoluongcu = "update SanPham set soluongTon=" + sl;
+            String backSoluongcu = "update SanPham set soluongTon=" + sl + " where masp=" + hd.getMasp();
             chitiethoaDonDB.updateData(backSoluongcu);
 
             if (sl < hd.getSoluongban() || sl <= 0) {
+                System.out.println("failed sl= " + sl);
                 return false;
             } else {
                 sl = sl - hd.getSoluongban();
@@ -101,9 +134,9 @@ public class ChiTietHoaDonDAO {
         return false;
     }
 
-    public ChiTietHoaDon getChiTietHoaDon(int mahd) {
+    public ChiTietHoaDon getChiTietHoaDon(int mahd, int masp) {
         try {
-            String sql = "select * from ChiTietHoaDon where mahd=" + mahd;
+            String sql = "select * from ChiTietHoaDon where mahd=" + mahd + " and masp=" + masp;
             ResultSet res = chitiethoaDonDB.queryData(sql);
             ChiTietHoaDon chiTietHoaDon = new ChiTietHoaDon();
             while (res.next()) {

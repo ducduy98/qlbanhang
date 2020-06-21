@@ -13,6 +13,17 @@ public class AccountSession {
     
     public static int manv;
     public static String taikhoan;
+    public static boolean admin;
+
+    public static boolean isAdmin() {
+        return admin;
+    }
+
+    public static void setAdmin(boolean admin) {
+        AccountSession.admin = admin;
+    }
+
+    
 
     public static int getManv() {
         return manv;

@@ -67,6 +67,8 @@ public class DangNhapScreen extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel3.setText("Mật khẩu");
 
+        txtTaiKhoan.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+
         btnDangNhap.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btnDangNhap.setText("Đăng nhập");
         btnDangNhap.addActionListener(new java.awt.event.ActionListener() {
@@ -74,6 +76,8 @@ public class DangNhapScreen extends javax.swing.JFrame {
                 btnDangNhapActionPerformed(evt);
             }
         });
+
+        txtPass.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
 
         btnThoat.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btnThoat.setText("Thoát");
@@ -85,7 +89,7 @@ public class DangNhapScreen extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(0, 51, 153));
 
-        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Chào mừng đến với cửa hàng CLASSIC");
 
@@ -93,17 +97,17 @@ public class DangNhapScreen extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(52, 52, 52)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 845, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(96, 96, 96))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(29, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(41, Short.MAX_VALUE)
+                .addComponent(jLabel4)
+                .addGap(30, 30, 30))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -125,10 +129,10 @@ public class DangNhapScreen extends javax.swing.JFrame {
                         .addComponent(btnDangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(388, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(415, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(399, 399, 399))
         );
@@ -137,7 +141,7 @@ public class DangNhapScreen extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(67, 67, 67)
+                .addGap(40, 40, 40)
                 .addComponent(jLabel1)
                 .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -151,7 +155,7 @@ public class DangNhapScreen extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDangNhap)
                     .addComponent(btnThoat))
-                .addContainerGap(166, Short.MAX_VALUE))
+                .addContainerGap(144, Short.MAX_VALUE))
         );
 
         pack();
@@ -167,7 +171,7 @@ public class DangNhapScreen extends javax.swing.JFrame {
             AccountSession lb = new AccountSession();
             lb.setTaikhoan(tentk);
             lb.setManv(nv.getManv());
-            System.out.println("ma nv " + lb.getManv());
+            lb.setAdmin(nv.isIsadmin());
             if(nv.isIsadmin()==true) {
                 kq=1;
             }else {

@@ -48,6 +48,16 @@ public class NhanVienDAO {
         }
         return false;
     }
+    public boolean updatePass(NhanVien nv) {
+        try {
+            String sql = "update NhanVien set pass=N'" + nv.getPass()+ "' where manv="+nv.getManv();
+
+            return nhanvienDB.updateData(sql);
+        } catch (Exception ex) {
+            Logger.getLogger(SanPhamDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
 
     public boolean deleteNV(int manv) {
         try {
